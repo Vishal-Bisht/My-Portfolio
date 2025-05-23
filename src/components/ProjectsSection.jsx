@@ -3,31 +3,31 @@ import { useState } from "react";
 const projects = [
   {
     name: "Prescripto",
-    image: "/src/assets/prescripto.png",
+    image: "/prescripto.png",
     description: "A doctor appointment web app built with React and TailwindCSS.",
     link: "https://prescripto-black-six.vercel.app/",
   },
   {
     name: "Portfolio Website",
-    image: "/src/assets/Portfolio.png",
+    image: "/Portfolio.png",
     description: "A modern, responsive portfolio built with React and TailwindCSS.",
     link: "https://my-portfolio-eight-gray-88.vercel.app/",
   },
   {
     name: "Palindrome Checker",
-    image: "/src/assets/palindrome-checker.png",
+    image: "/palindrome-checker.png",
     description: "A palindrome checker built with JavaScript.",
     link: "https://github.com/yourusername/palindrome-checker",
   },
   {
     name: "Rock Paper Scissors Game",
-    image: "/src/assets/rock-paper-scissors.png",
+    image: "/rock-paper-scissors.png",
     description: "A Rock Paper Scissors game built with JavaScript.",
     link: "https://vishal-bisht.github.io/Rock-Paper-Scissors-Game/",
   },
   {
     name: "Amazon Clone",
-    image: "/src/assets/amazon-clone.png",
+    image: "/amazon-clone.png",
     description: "A clone of the Amazon UI to practice HTML, CSS, and JavaScript.",
     link: "https://vishal-bisht.github.io/Amazon-clone/",
   },
