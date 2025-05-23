@@ -9,20 +9,20 @@ const ContactSection = () => (
     <form className="space-y-4 max-w-xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="clientname" className="block mb-1 flex items-center gap-1">
+          <label htmlFor="clientname" className="mb-1 flex items-center gap-1">
             <User className="h-4 w-4 text-indigo-400" /> Name
           </label>
           <input type="text" id="clientname" className="w-full px-3 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
         </div>
         <div>
-          <label htmlFor="clientemail" className="block mb-1 flex items-center gap-1">
+          <label htmlFor="clientemail" className="mb-1 flex items-center gap-1">
             <Mail className="h-4 w-4 text-indigo-400" /> Email Address
           </label>
           <input type="email" id="clientemail" className="w-full px-3 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
           <div className="text-xs text-gray-400 mt-1">*we'll never share your email & phone details with anyone</div>
         </div>
         <div>
-          <label htmlFor="clientphone" className="block mb-1 flex items-center gap-1">
+          <label htmlFor="clientphone" className="mb-1 flex items-center gap-1">
             <Phone className="h-4 w-4 text-indigo-400" /> Phone no.
           </label>
           <input type="tel" id="clientphone" className="w-full px-3 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500" />

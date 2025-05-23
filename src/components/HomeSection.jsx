@@ -31,7 +31,7 @@ const HomeSection = () => {
         </div>
         <div className="flex-1 flex justify-center items-end">
           <img
-            src="/src/assets/programmer.png"
+            src="/programmer.png"
             alt="Programmer"
             className="w-71 h-71 object-contain drop-shadow-xl rounded-lg"
             loading="lazy"
