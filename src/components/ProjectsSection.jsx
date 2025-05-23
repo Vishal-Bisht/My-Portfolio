@@ -11,7 +11,7 @@ const projects = [
     name: "Portfolio Website",
     image: "/src/assets/Portfolio.png",
     description: "A modern, responsive portfolio built with React and TailwindCSS.",
-    link: "https://your-portfolio-link.com",
+    link: "https://my-portfolio-eight-gray-88.vercel.app/",
   },
   {
     name: "Palindrome Checker",
