@@ -1,15 +1,28 @@
 import { Mail, Phone, User, Briefcase } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const initialForm = {
+  name: "",
+  email: "",
+  phone: "",
+  isClient: false,
+};
 
 const ContactSection = () => {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    isClient: false,
-  });
+  const [form, setForm] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    let timer;
+    if (submitted) {
+      timer = setTimeout(() => {
+        setSubmitted(false);
+        setForm(initialForm);
+      }, 6000); // 6 seconds
+    }
+    return () => clearTimeout(timer);
+  }, [submitted]);
 
   const handleChange = (e) => {
     const { id, value, type, checked } = e.target;
@@ -27,7 +40,6 @@ const ContactSection = () => {
     }
     setError("");
     setSubmitted(true);
-    // Here you can integrate with EmailJS, Formspree, etc.
   };
 
   return (

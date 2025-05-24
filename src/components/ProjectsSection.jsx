@@ -27,14 +27,14 @@ const projects = [
     image: "/palindrome-checker.png",
     description: "A palindrome checker built with JavaScript.",
     link: "https://github.com/yourusername/palindrome-checker",
-    techStack: ["JavaScript", "HTML", "CSS"],
+    techStack: ["HTML", "CSS", "JavaScript"],
   },
   {
     name: "Rock Paper Scissors Game",
     image: "/rock-paper-scissors.png",
     description: "A Rock Paper Scissors game built with JavaScript.",
     link: "https://vishal-bisht.github.io/Rock-Paper-Scissors-Game/",
-    techStack: ["JavaScript", "HTML", "CSS"],
+    techStack: ["HTML", "CSS", "JavaScript"],
   },
 ];
 
@@ -58,36 +58,15 @@ const ProjectsSection = () => {
             <h3 className="font-semibold text-lg mb-2 text-center">{project.name}</h3>
             <p className="text-gray-400 mb-2 text-center">{project.description}</p>
             <div className="flex flex-wrap gap-2 mb-4 justify-center">
-              {project.techStack && project.techStack.map((tech) => {
-                let badgeClass = "text-xs px-2 py-1 rounded font-medium shadow-sm";
-                switch (tech) {
-                  case "React":
-                    badgeClass += " bg-cyan-600/90 text-white";
-                    break;
-                  case "TailwindCSS":
-                    badgeClass += " bg-teal-500/90 text-white";
-                    break;
-                  case "Vite":
-                    badgeClass += " bg-purple-500/90 text-white";
-                    break;
-                  case "HTML":
-                    badgeClass += " bg-orange-500/90 text-white";
-                    break;
-                  case "CSS":
-                    badgeClass += " bg-blue-600/90 text-white";
-                    break;
-                  case "JavaScript":
-                    badgeClass += " bg-yellow-400/90 text-gray-900";
-                    break;
-                  default:
-                    badgeClass += " bg-gray-700/80 text-white";
-                }
-                return (
-                  <span key={tech} className={badgeClass}>
-                    {tech}
-                  </span>
-                );
-              })}
+              {project.techStack && project.techStack.map((tech) => (
+                <span
+                  key={tech}
+                  style={{ backgroundColor: '#B8FF66', color: '#225100' }}
+                  className="text-xs px-2 py-1 rounded font-medium shadow-sm"
+                >
+                  {tech}
+                </span>
+              ))}
             </div>
             <a
               href={project.link}
