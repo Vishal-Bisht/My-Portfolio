@@ -39,7 +39,7 @@ const HomeSection = () => {
         </div>
       </div>
       <div className="flex gap-4 mt-8">
-        <a href="../Resume.pdf" target="_blank" className="btn bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded shadow">Download CV</a>
+        <a href="/Resume.pdf" target="_blank" className="btn bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded shadow">Download CV</a>
         <a href="#Contact_me" className="btn bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded shadow">Contact Me</a>
       </div>
     </section>
