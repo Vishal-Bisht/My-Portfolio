@@ -32,9 +32,13 @@ const Topbar = () => {
         className={`w-full fixed top-0 left-0 z-20 backdrop-blur-md bg-gray-950/70 border-b border-gray-800 transition-colors duration-300 flex items-center`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between w-full px-4 py-3">
-          <span className="font-bold text-xl tracking-wide text-indigo-400">
+          <a
+            href="#Home"
+            className="font-bold text-xl tracking-wide text-indigo-400 select-none hover:underline focus:underline outline-none"
+            onClick={(e) => handleNavClick(e, "#Home")}
+          >
             Vishal Bisht
-          </span>
+          </a>
           <nav className="hidden md:block">
             <ul className="flex space-x-4">
               {navLinks.map((link) => (
@@ -88,7 +92,7 @@ const Topbar = () => {
               ))}
             </ul>
           </nav>
-          
+
           <div className="flex-1" onClick={() => setMobileOpen(false)} />
         </div>
       )}

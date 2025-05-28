@@ -6,7 +6,7 @@ Whether it's C, C++, or JavaScript, I'm in my element. But it's not just about k
 
 And then there's web development. That's where I get to flex my creative muscles. I love weaving together front-end and back-end technologies to create seamless user experiences. It's like painting with code. So yeah, you could say I'm pretty passionate about this stuff. And I can't wait to see where this journey takes me.`;
 
-const introPreview = `Hey there, I'm Vishal Bist, a final year Computer Science student. From the get-go, I've been obsessed with all things related to programming and software development. It's like a puzzle to me—always challenging, always rewarding.`;
+const introPreview = `Hey there, I'm Vishal Bisht, a final year Computer Science student. From the get-go, I've been obsessed with all things related to programming and software development. It's like a puzzle to me—always challenging, always rewarding.`;
 
 const IntroSection = () => {
   const [showFull, setShowFull] = useState(false);
