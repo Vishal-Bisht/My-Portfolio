@@ -43,7 +43,7 @@ const ProjectsSection = () => {
 	const visibleProjects = showAll ? projects : projects.slice(0, 4);
 	return (
 		<section id="Projects" className="bg-gray-800/60 rounded-xl p-6 shadow-lg">
-			<h2 className="text-2xl font-bold mb-4">Projects</h2>
+			<h2 className="text-2xl font-bold mb-4 text-center">Projects</h2>
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 				{visibleProjects.map((project) => (
 					<div

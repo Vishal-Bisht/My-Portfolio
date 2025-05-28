@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import TypingEffect from "./TypingEffect";
 import AOS from "aos";
 import "aos/dist/aos.css";

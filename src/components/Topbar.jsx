@@ -13,7 +13,6 @@ const navLinks = [
 const Topbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Scroll to section with offset for fixed topbar
   const handleNavClick = (e, href) => {
     e.preventDefault();
     const id = href.replace("#", "");
@@ -34,7 +33,7 @@ const Topbar = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between w-full px-4 py-3">
           <a
             href="#Home"
-            className="font-bold text-xl tracking-wide text-indigo-400 select-none hover:underline focus:underline outline-none"
+            className="font-bold text-xl tracking-wide text-indigo-400 select-none outline-none"
             onClick={(e) => handleNavClick(e, "#Home")}
           >
             Vishal Bisht

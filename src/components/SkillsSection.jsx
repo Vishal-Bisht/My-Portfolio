@@ -20,7 +20,8 @@ const SkillsSection = () => (
       {/* Blur overlays */}
       <div className="pointer-events-none absolute left-0 top-0 h-full w-16 z-10" style={{background: "linear-gradient(90deg, rgba(31,41,55,0.8) 70%, transparent)"}} />
       <div className="pointer-events-none absolute right-0 top-0 h-full w-16 z-10" style={{background: "linear-gradient(270deg, rgba(31,41,55,0.8) 70%, transparent)"}} />
-      {/* Scrolling skills */}
+
+      {/* Skills Scrollbar */}
       <div
         className="overflow-x-hidden w-full border-none"
         style={{ maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)", border: 'none' }}

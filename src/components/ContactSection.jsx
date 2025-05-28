@@ -78,7 +78,6 @@ const ContactSection = () => {
             </div>
           </div>
           {error && <div className="text-red-400 text-sm text-center">{error}</div>}
-          {/* Center the submit button */}
           <div className="flex justify-center">
             <button type="submit" className="btn bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded shadow flex items-center gap-2">
               <Briefcase className="h-4 w-4" /> Submit
