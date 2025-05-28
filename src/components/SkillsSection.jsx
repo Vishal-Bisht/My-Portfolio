@@ -35,7 +35,7 @@ const SkillsSection = () => (
               key={idx}
               src={skill.src}
               alt={skill.alt}
-              className="h-16 w-16 object-contain select-none drop-shadow-lg flex-shrink-0"
+              className="h-8 w-8 md:h-16 md:w-16 object-contain select-none drop-shadow-lg flex-shrink-0"
               draggable="false"
             />
           ))}
