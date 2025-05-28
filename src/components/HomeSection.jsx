@@ -17,7 +17,7 @@ const HomeSection = () => {
           <TypingEffect words={professions} className="text-indigo-400 type_my_profession" />
         </span>
       </h1>
-      <div className="flex flex-row justify-center">
+      <div className="flex flex-col md:flex-row justify-center">
         <div className="flex-1 flex flex-col justify-end text-center md:items-start md:text-left pb-10">
           <div className="text-xl text-gray-300 text-left">
             Hi I am
@@ -31,9 +31,9 @@ const HomeSection = () => {
         </div>
         <div className="flex-1 flex justify-center items-end">
           <img
-            src="/programmer.png"
+            src="/projects/programmer.png"
             alt="Programmer"
-            className="w-71 h-71 object-contain drop-shadow-xl rounded-lg"
+            className="w-72 h-72 object-contain drop-shadow-xl rounded-lg flex-shrink-0"
             loading="lazy"
           />
         </div>

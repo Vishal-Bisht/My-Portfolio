@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const introFull = `Hey there, I'm Vishal Bist, a final year Computer Science student. From the get-go, I've been obsessed with all things related to programming and software development. It's like a puzzle to me—always challenging, always rewarding.
+const introFull = `Hey there, I'm Vishal Bisht, a final year Computer Science student. From the get-go, I've been obsessed with all things related to programming and software development. It's like a puzzle to me—always challenging, always rewarding.
 
 Whether it's C, C++, or JavaScript, I'm in my element. But it's not just about knowing the syntax for me. I dive deep into Data Structures and Algorithms, constantly honing my skills to build solutions that are not just functional but elegant too.
 

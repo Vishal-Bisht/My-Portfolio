@@ -33,7 +33,7 @@ const Topbar = () => {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between w-full px-4 py-3">
           <span className="font-bold text-xl tracking-wide text-indigo-400">
-            Vishal Bist
+            Vishal Bisht
           </span>
           <nav className="hidden md:block">
             <ul className="flex space-x-4">

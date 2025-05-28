@@ -44,7 +44,7 @@ const ContactSection = () => {
 
   return (
     <section id="Contact_me" className="bg-gray-800/60 rounded-xl p-6 shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
+      <h2 className="text-2xl font-bold mb-8 flex items-center gap-2 text-center justify-center">
         <Briefcase className="inline-block h-6 w-6 text-indigo-400" />
         Contact me for work/general enquiries
       </h2>
@@ -78,7 +78,8 @@ const ContactSection = () => {
             </div>
           </div>
           {error && <div className="text-red-400 text-sm text-center">{error}</div>}
-          <div className="flex justify-end">
+          {/* Center the submit button */}
+          <div className="flex justify-center">
             <button type="submit" className="btn bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded shadow flex items-center gap-2">
               <Briefcase className="h-4 w-4" /> Submit
             </button>
