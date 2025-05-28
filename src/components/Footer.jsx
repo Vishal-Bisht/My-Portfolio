@@ -61,7 +61,7 @@ const Footer = () => (
         />
       </a>
     </div>
-    <div className="mt-4 text-xs text-gray-500">&copy; {new Date().getFullYear()} Vishal Bisht. All rights reserved.<br/>@copyright</div>
+    <div className="mt-4 text-xs text-gray-500">&copy; {new Date().getFullYear()} Vishal Bisht. All rights reserved.</div>
   </footer>
 );
 
