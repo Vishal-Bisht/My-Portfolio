@@ -29,13 +29,12 @@ const SkillsSection = () => (
           className="flex gap-6 md:gap-10 items-center animate-skills-scroll will-change-transform group hover:[animation-play-state:paused]"
           style={{ animation: "skills-scroll 30s linear infinite" }}
         >
-          {/* Repeat skills twice for seamless infinite effect */}
           {skills.concat(skills).map((skill, idx) => (
             <img
               key={idx}
               src={skill.src}
               alt={skill.alt}
-              className="h-8 w-8 md:h-16 md:w-16 object-contain select-none drop-shadow-lg flex-shrink-0"
+              className="h-8 w-8 md:h-16 md:w-16 sm:mr-4 object-contain select-none drop-shadow-lg flex-shrink-0"
               draggable="false"
             />
           ))}

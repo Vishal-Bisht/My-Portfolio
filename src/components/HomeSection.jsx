@@ -5,27 +5,26 @@ const professions = [
   "Front-end Developer",
   "Programmer",
   "CS Student",
-  "Web Developer",
 ];
 
 const HomeSection = () => {
   return (
     <section id="Home" className="flex flex-col items-center justify-center min-h-[90vh] w-full pb-8">
-      <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 mt-8 md:mt-0">
+      <h1 className="text-2xl  md:text-5xl font-bold text-center mb-8 mt-8 md:mt-0">
         I'm a{" "}
         <span className="inline-block min-w-[15ch] text-left align-middle">
           <TypingEffect words={professions} className="text-indigo-400 type_my_profession" />
         </span>
       </h1>
-      <div className="flex flex-col md:flex-row justify-center">
-        <div className="flex-1 flex flex-col justify-end text-center md:items-start lg:text-left pb-10">
-          <div className="text-base sm:text-lg md:text-xl text-gray-300 sm:text-start lg:text-left">
+      <div className="flex flex-row justify-center">
+        <div className="flex-1 flex flex-col justify-end text-center md:items-start md:text-left pb-10">
+          <div className="text-xl text-gray-300 text-left">
             Hi I am
           </div>
-          <div className="font-bold text-lg sm:text-2xl md:text-3xl lg:text-5xl text-white">
+          <div className="font-bold text-3xl md:text-5xl text-white">
             Vishal Bisht
           </div>
-          <div className="text-xs sm:text-sm lg:text-lg text-gray-500 text-left">
+          <div className="text-md text-gray-500 text-left">
             Front-end Developer, Programmer
           </div>
         </div>
@@ -33,7 +32,7 @@ const HomeSection = () => {
           <img
             src="/projects/programmer.png"
             alt="Programmer"
-            className="w-40 h-40 sm:w-md sm:h-md lg:w-72 lg:h-72 object-contain drop-shadow-xl rounded-lg flex-shrink-0"
+            className="w-71 h-71 object-contain drop-shadow-xl rounded-lg"
             loading="lazy"
           />
         </div>
