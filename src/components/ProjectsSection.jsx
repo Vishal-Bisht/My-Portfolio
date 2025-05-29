@@ -2,6 +2,13 @@ import { useState } from "react";
 
 const projects = [
 	{
+		name: "CollegTips Image Gallery",
+		image: "/projects/Image-gallery.png",
+		description: "A Photo/Video Gallery created with React and TailwindCSS.",
+		link: "https://image-gallery-liard-gamma.vercel.app/",
+		techStack: ["React", "TailwindCSS", "Vite"],
+	},
+	{
 		name: "Prescripto",
 		image: "/projects/prescripto.png",
 		description: "A doctor appointment web app built with React and TailwindCSS.",
@@ -26,7 +33,7 @@ const projects = [
 		name: "Palindrome Checker",
 		image: "/projects/palindrome-checker.png",
 		description: "A palindrome checker built with JavaScript.",
-		link: "https://github.com/yourusername/palindrome-checker",
+		link: "https://vishal-bisht.github.io/Palindrome-Checker/",
 		techStack: ["HTML", "CSS", "JavaScript"],
 	},
 	{
