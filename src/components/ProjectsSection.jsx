@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const projects = [
 	{
-		name: "CollegTips Image Gallery",
+		name: "CollegTips Gallery",
 		image: "/projects/Image-gallery.png",
 		description: "A Photo/Video Gallery created with React and TailwindCSS.",
 		link: "https://image-gallery-liard-gamma.vercel.app/",
