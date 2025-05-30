@@ -2,6 +2,13 @@ import { useState } from "react";
 
 const projects = [
 	{
+		name: "WeatherScope",
+		image: "/projects/WeatherScope.png",
+		description: "A Weather app which shows weather condition of any location worldwide.",
+		link: "https://weather-app-three-olive-95.vercel.app/",
+		techStack: ["React", "TailwindCSS", "Vite"],
+	},
+	{
 		name: "CollegTips Gallery",
 		image: "/projects/Image-gallery.png",
 		description: "A Photo/Video Gallery created with React and TailwindCSS.",
