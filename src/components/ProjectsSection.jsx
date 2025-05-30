@@ -22,13 +22,13 @@ const projects = [
 		link: "https://prescripto-black-six.vercel.app/",
 		techStack: ["React", "TailwindCSS", "Vite"],
 	},
-	{
-		name: "Portfolio Website",
-		image: "/projects/Portfolio.png",
-		description: "A modern, responsive portfolio built with React and TailwindCSS.",
-		link: "https://my-portfolio-eight-gray-88.vercel.app/",
-		techStack: ["React", "TailwindCSS", "Vite"],
-	},
+	// {
+	// 	name: "Portfolio Website",
+	// 	image: "/projects/Portfolio.png",
+	// 	description: "A modern, responsive portfolio built with React and TailwindCSS.",
+	// 	link: "https://my-portfolio-eight-gray-88.vercel.app/",
+	// 	techStack: ["React", "TailwindCSS", "Vite"],
+	// },
 	{
 		name: "Amazon Clone",
 		image: "/projects/amazon-clone.png",
