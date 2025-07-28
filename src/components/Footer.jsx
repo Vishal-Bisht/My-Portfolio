@@ -13,7 +13,7 @@ const Footer = () => (
     <h2 className="text-lg font-semibold mb-2">Connect with me</h2>
     <div className="flex justify-center gap-6 mt-2">
       <a
-        href="https://www.instagram.com/vishal_bisht000/"
+        href="https://www.instagram.com/vishal_bisht001/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Instagram"
@@ -30,7 +30,7 @@ const Footer = () => (
         rel="noopener noreferrer"
         aria-label="LinkedIn"
       >
-         <img
+        <img
           src="/icons/linkedin.svg"
           alt="Twitter"
           className="h-6 w-6 footer-social-icon"
@@ -61,7 +61,9 @@ const Footer = () => (
         />
       </a>
     </div>
-    <div className="mt-4 text-xs text-gray-500">&copy; {new Date().getFullYear()} Vishal Bisht. All rights reserved.</div>
+    <div className="mt-4 text-xs text-gray-500">
+      &copy; {new Date().getFullYear()} Vishal Bisht. All rights reserved.
+    </div>
   </footer>
 );
 
