@@ -74,10 +74,7 @@ const skills = [
 ];
 
 const SkillsSection = () => (
-  <section
-    className="relative left-1/2 right-1/2 w-screen max-w-none -translate-x-1/2 py-8 bg-gray-800/60 rounded-xl shadow-lg overflow-hidden"
-    style={{ position: "relative" }}
-  >
+  <section className="relative w-full py-8 bg-gray-800/60 rounded-xl shadow-lg overflow-hidden">
     <h2 className="text-2xl font-bold text-center mb-6 text-white">
       My Skills
     </h2>
@@ -99,17 +96,13 @@ const SkillsSection = () => (
       />
 
       {/* Skills Scrollbar */}
-      <div
-        className="overflow-x-hidden w-full border-none"
-        style={{
-          maskImage:
-            "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
-          border: "none",
-        }}
-      >
+      <div className=" overflow-x-hidden w-full ">
         <div
-          className="flex gap-6 md:gap-10 items-center animate-skills-scroll will-change-transform group hover:[animation-play-state:paused]"
-          style={{ animation: "skills-scroll 30s linear infinite" }}
+          className="flex gap-6 md:gap-10 items-center will-change-transform group hover:[animation-play-state:paused]"
+          style={{
+            animation: "skills-scroll 30s linear infinite",
+            minWidth: "200%",
+          }}
         >
           {skills.concat(skills).map((skill, idx) => (
             <img
@@ -128,20 +121,6 @@ const SkillsSection = () => (
       @keyframes skills-scroll {
         0% { transform: translateX(0); }
         100% { transform: translateX(-40%); }
-      }
-      .animate-skills-scroll {
-        min-width: 200%;
-      }
-      .group:hover {
-        animation-play-state: paused !important;
-      }
-      /* Remove any border from the scrolling area */
-      .skills-scrollbar::-webkit-scrollbar,
-      .skills-scrollbar {
-        border: none !important;
-      }
-      html, body {
-        overflow-x: hidden !important;
       }
     `}</style>
   </section>

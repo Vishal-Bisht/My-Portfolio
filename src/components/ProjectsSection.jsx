@@ -118,7 +118,7 @@ const ProjectsSection = () => {
       {projects.length > 4 && (
         <div className="flex justify-center mt-6">
           <button
-            className="btn bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded"
+            className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded"
             onClick={() => setShowAll((v) => !v)}
           >
             {showAll ? "Show less" : "Show more"}

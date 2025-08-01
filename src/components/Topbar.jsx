@@ -66,7 +66,7 @@ const Topbar = () => {
       {/* Mobile Sidebar Drawer */}
       {mobileOpen && (
         <div className="fixed inset-0 z-30 bg-black/60 backdrop-blur-sm flex">
-          <nav className="w-64 bg-gray-950/95 h-full p-6 flex flex-col gap-6 animate-slideInLeft">
+          <nav className="w-64 bg-gray-950/95 h-full p-6 flex flex-col gap-6">
             <div className="flex justify-between items-center mb-6">
               <span className="font-bold text-lg text-indigo-400">Menu</span>
               <button
