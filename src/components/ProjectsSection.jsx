@@ -1,71 +1,67 @@
-import { useState } from "react";
-
-const projects = [
-  {
-    name: "Sorting Visualizer",
-    image: "/projects/visualizer.png",
-    description:
-      "A Sorting algorithm visualizer web app which visualizes how different sorting algorithms actually work.",
-    link: "https://sorting-visualizer-ten-gamma.vercel.app/",
-    techStack: ["React", "TailwindCSS", "Vite"],
-  },
-  {
-    name: "WeatherScope",
-    image: "/projects/WeatherScope.png",
-    description:
-      "A Weather app which shows weather condition of any location worldwide.",
-    link: "https://weather-app-three-olive-95.vercel.app/",
-    techStack: ["React", "TailwindCSS", "Vite"],
-  },
-  {
-    name: "Prescripto",
-    image: "/projects/prescripto.png",
-    description:
-      "A doctor appointment web app built with React and TailwindCSS.",
-    link: "https://prescripto-black-six.vercel.app/",
-    techStack: ["React", "TailwindCSS", "Vite"],
-  },
-  {
-    name: "CollegTips Gallery",
-    image: "/projects/Image-gallery.png",
-    description: "A Photo/Video Gallery created with React and TailwindCSS.",
-    link: "https://image-gallery-liard-gamma.vercel.app/",
-    techStack: ["React", "TailwindCSS", "Vite"],
-  },
-  {
-    name: "Amazon Clone",
-    image: "/projects/amazon-clone.png",
-    description:
-      "A clone of the Amazon UI to practice HTML, CSS, and JavaScript.",
-    link: "https://vishal-bisht.github.io/Amazon-clone/",
-    techStack: ["HTML", "CSS", "JavaScript"],
-  },
-  {
-    name: "Rock Paper Scissors Game",
-    image: "/projects/rock-paper-scissors.png",
-    description: "A Rock Paper Scissors game built with JavaScript.",
-    link: "https://vishal-bisht.github.io/Rock-Paper-Scissors-Game/",
-    techStack: ["HTML", "CSS", "JavaScript"],
-  },
-  {
-    name: "Click Circle",
-    image: "/projects/click-circle.png",
-    description: "A mini project built with JavaScript.",
-    link: "https://vishal-bisht.github.io/Click-Circle/",
-    techStack: ["HTML", "CSS", "JavaScript"],
-  },
-  {
-    name: "Palindrome Checker",
-    image: "/projects/palindrome-checker.png",
-    description: "A palindrome checker built with JavaScript.",
-    link: "https://vishal-bisht.github.io/Palindrome-Checker/",
-    techStack: ["HTML", "CSS", "JavaScript"],
-  },
-];
+import { useState, useEffect } from "react";
 
 const ProjectsSection = () => {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [showAll, setShowAll] = useState(false);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/projects");
+        const data = await response.json();
+
+        if (response.ok) {
+          setProjects(data.projects);
+        } else {
+          setError("Failed to load projects");
+          // Fallback to hardcoded projects if API fails
+          setProjects(fallbackProjects);
+        }
+      } catch (error) {
+        console.error("Projects fetch error:", error);
+        setError("Failed to load projects");
+        // Fallback to hardcoded projects if API fails
+        setProjects(fallbackProjects);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
   const visibleProjects = showAll ? projects : projects.slice(0, 4);
+
+  if (loading) {
+    return (
+      <section
+        id="Projects"
+        className="bg-gray-800/60 rounded-xl p-6 shadow-lg"
+      >
+        <h2 className="text-2xl font-bold mb-4 text-center">Projects</h2>
+        <div className="text-center py-8">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500 mx-auto"></div>
+          <p className="mt-4 text-gray-400">Loading projects...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (error && projects.length === 0) {
+    return (
+      <section
+        id="Projects"
+        className="bg-gray-800/60 rounded-xl p-6 shadow-lg"
+      >
+        <h2 className="text-2xl font-bold mb-4 text-center">Projects</h2>
+        <div className="text-center py-8">
+          <p className="text-red-400">{error}</p>
+        </div>
+      </section>
+    );
+  }
   return (
     <section id="Projects" className="bg-gray-800/60 rounded-xl p-6 shadow-lg">
       <h2 className="text-2xl font-bold mb-4 text-center">Projects</h2>
@@ -128,5 +124,69 @@ const ProjectsSection = () => {
     </section>
   );
 };
+
+// Fallback projects data in case API fails
+const fallbackProjects = [
+  {
+    name: "Sorting Visualizer",
+    image: "/projects/visualizer.png",
+    description:
+      "A Sorting algorithm visualizer web app which visualizes how different sorting algorithms actually work.",
+    link: "https://sorting-visualizer-ten-gamma.vercel.app/",
+    techStack: ["React", "TailwindCSS", "Vite"],
+  },
+  {
+    name: "WeatherScope",
+    image: "/projects/WeatherScope.png",
+    description:
+      "A Weather app which shows weather condition of any location worldwide.",
+    link: "https://weather-app-three-olive-95.vercel.app/",
+    techStack: ["React", "TailwindCSS", "Vite"],
+  },
+  {
+    name: "Prescripto",
+    image: "/projects/prescripto.png",
+    description:
+      "A doctor appointment web app built with React and TailwindCSS.",
+    link: "https://prescripto-black-six.vercel.app/",
+    techStack: ["React", "TailwindCSS", "Vite"],
+  },
+  {
+    name: "CollegTips Gallery",
+    image: "/projects/Image-gallery.png",
+    description: "A Photo/Video Gallery created with React and TailwindCSS.",
+    link: "https://image-gallery-liard-gamma.vercel.app/",
+    techStack: ["React", "TailwindCSS", "Vite"],
+  },
+  {
+    name: "Amazon Clone",
+    image: "/projects/amazon-clone.png",
+    description:
+      "A clone of the Amazon UI to practice HTML, CSS, and JavaScript.",
+    link: "https://vishal-bisht.github.io/Amazon-clone/",
+    techStack: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    name: "Rock Paper Scissors Game",
+    image: "/projects/rock-paper-scissors.png",
+    description: "A Rock Paper Scissors game built with JavaScript.",
+    link: "https://vishal-bisht.github.io/Rock-Paper-Scissors-Game/",
+    techStack: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    name: "Click Circle",
+    image: "/projects/click-circle.png",
+    description: "A mini project built with JavaScript.",
+    link: "https://vishal-bisht.github.io/Click-Circle/",
+    techStack: ["HTML", "CSS", "JavaScript"],
+  },
+  {
+    name: "Palindrome Checker",
+    image: "/projects/palindrome-checker.png",
+    description: "A palindrome checker built with JavaScript.",
+    link: "https://vishal-bisht.github.io/Palindrome-Checker/",
+    techStack: ["HTML", "CSS", "JavaScript"],
+  },
+];
 
 export default ProjectsSection;

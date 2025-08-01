@@ -11,6 +11,7 @@ const initialForm = {
 const ContactSection = () => {
   const [form, setForm] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -33,14 +34,36 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email) {
       setError("Please fill in your name and email.");
       return;
     }
+
     setError("");
+    setLoading(true);
+
+    // Show success message immediately for better UX
     setSubmitted(true);
+    setLoading(false);
+
+    // Send email in background without blocking UI
+    fetch("http://localhost:5000/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        isClient: form.isClient,
+      }),
+    }).catch(error => {
+      console.error('Background email sending failed:', error);
+      // Don't show error to user as they already see success message
+    });
   };
 
   return (
@@ -124,9 +147,23 @@ const ContactSection = () => {
           <div className="flex justify-center">
             <button
               type="submit"
-              className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded shadow flex items-center gap-2"
+              disabled={loading}
+              className={`${
+                loading 
+                  ? 'bg-indigo-400 cursor-not-allowed' 
+                  : 'bg-indigo-600 hover:bg-indigo-700'
+              } text-white px-6 py-2 rounded shadow flex items-center gap-2 transition-colors`}
             >
-              <Briefcase className="h-4 w-4" /> Submit
+              {loading ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <Briefcase className="h-4 w-4" /> Submit
+                </>
+              )}
             </button>
           </div>
         </form>
