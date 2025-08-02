@@ -49,9 +49,7 @@ const ContactSection = () => {
     setLoading(false);
 
     // Send email in background without blocking UI
-    const apiUrl =
-      import.meta.env.VITE_API_URL ||
-      (import.meta.env.PROD ? "" : "http://localhost:5000");
+    const apiUrl = import.meta.env.PROD ? "" : "http://localhost:5000";
 
     fetch(`${apiUrl}/api/contact`, {
       method: "POST",
