@@ -49,7 +49,11 @@ const ContactSection = () => {
     setLoading(false);
 
     // Send email in background without blocking UI
-    fetch("http://localhost:5000/api/contact", {
+    const apiUrl =
+      import.meta.env.VITE_API_URL ||
+      (import.meta.env.PROD ? "" : "http://localhost:5000");
+
+    fetch(`${apiUrl}/api/contact`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,8 +64,8 @@ const ContactSection = () => {
         phone: form.phone,
         isClient: form.isClient,
       }),
-    }).catch(error => {
-      console.error('Background email sending failed:', error);
+    }).catch((error) => {
+      console.error("Background email sending failed:", error);
       // Don't show error to user as they already see success message
     });
   };
@@ -149,9 +153,9 @@ const ContactSection = () => {
               type="submit"
               disabled={loading}
               className={`${
-                loading 
-                  ? 'bg-indigo-400 cursor-not-allowed' 
-                  : 'bg-indigo-600 hover:bg-indigo-700'
+                loading
+                  ? "bg-indigo-400 cursor-not-allowed"
+                  : "bg-indigo-600 hover:bg-indigo-700"
               } text-white px-6 py-2 rounded shadow flex items-center gap-2 transition-colors`}
             >
               {loading ? (
