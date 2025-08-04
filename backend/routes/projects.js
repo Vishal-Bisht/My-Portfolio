@@ -2,7 +2,7 @@ import express from 'express';
 
 const router = express.Router();
 
-// Initial projects data (later you can move this to a database)
+
 const projects = [
   {
     id: 1,
@@ -86,7 +86,7 @@ const projects = [
   }
 ];
 
-// GET /api/projects - Get all projects
+
 router.get('/', (req, res) => {
   try {
     const { featured, limit, tech } = req.query;
@@ -128,7 +128,6 @@ router.get('/', (req, res) => {
   }
 });
 
-// GET /api/projects/featured - Get featured projects only
 router.get('/featured', (req, res) => {
   try {
     const featuredProjects = projects.filter(project => project.featured);
@@ -146,7 +145,7 @@ router.get('/featured', (req, res) => {
   }
 });
 
-// GET /api/projects/:id - Get single project by ID
+
 router.get('/:id', (req, res) => {
   try {
     const projectId = parseInt(req.params.id);
@@ -172,7 +171,7 @@ router.get('/:id', (req, res) => {
   }
 });
 
-// GET /api/projects/tech/stack - Get all unique technologies used
+
 router.get('/tech/stack', (req, res) => {
   try {
     const allTech = projects.flatMap(project => project.techStack);

@@ -1,10 +1,16 @@
 import express from 'express';
+import path from 'path';
 import cors from 'cors';
 import helmet from 'helmet';
+import { fileURLToPath } from 'url';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import contactRoutes from './routes/contact.js';
 import projectsRoutes from './routes/projects.js';
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 dotenv.config();
@@ -29,11 +35,11 @@ app.use(cors({
   credentials: true
 }));
 
+app.use(express.json());
+
+app.use(express.static(path.join(__dirname, '../frontend/public')));
+
 // Routes
-app.use('/api/contact', contactRoutes);
-app.use('/api/projects', projectsRoutes);
-
-
 app.get('/api', (req, res) => {
   res.json({ 
     status: 'OK', 
@@ -41,6 +47,11 @@ app.get('/api', (req, res) => {
     timestamp: new Date().toISOString()
   });
 });
+
+app.use('/api/contact', contactRoutes);
+app.use('/api/projects', projectsRoutes);
+
+
 
 
 app.use((err, req, res, next) => {

@@ -4,18 +4,7 @@ import nodemailer from 'nodemailer';
 export const sendContactEmail = async (contactData) => {
   try {
     // Check if email credentials are configured
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD || 
-        process.env.EMAIL_USER === 'your-email@gmail.com') {
-      console.log('📧 Email credentials not configured, logging contact data instead:');
-      console.log('✅ Contact form submission received:');
-      console.log({
-        name: contactData.name,
-        email: contactData.email,
-        phone: contactData.phone,
-        isClient: contactData.isClient ? 'Project Work Inquiry' : 'General Inquiry',
-        timestamp: new Date(contactData.timestamp).toLocaleString()
-      });
-      console.log('💡 To enable email notifications, configure EMAIL_USER and EMAIL_PASSWORD in .env');
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
       return { success: true, message: 'Contact logged successfully' };
     }
 
@@ -97,15 +86,13 @@ export const sendContactEmail = async (contactData) => {
       transporter.sendMail(autoReplyOptions)
     ]);
 
-    console.log('✅ Contact emails sent successfully');
     return { success: true };
 
   } catch (error) {
-    console.error('❌ Email sending failed:', error);
+    console.error('Email sending failed:', error);
     
     // For now, we'll just log the contact data if email fails
     // In production, you might want to save to database as backup
-    console.log('📝 Contact data (email failed):', contactData);
     
     throw new Error('Failed to send email');
   }

@@ -12,13 +12,14 @@ const ContactSection = () => {
   const [form, setForm] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [Message, setMessage] = useState("");
 
   useEffect(() => {
     let timer;
     if (submitted) {
       timer = setTimeout(() => {
         setSubmitted(false);
+        setMessage("");
         setForm(initialForm);
       }, 6000); // 6 seconds
     }
@@ -36,36 +37,44 @@ const ContactSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email) {
-      setError("Please fill in your name and email.");
+
+    if (!form.name.trim() || !form.email.trim()) {
+      setMessage("Please fill in your name and email.");
       return;
     }
 
-    setError("");
+    setMessage("");
     setLoading(true);
 
-    // Show success message immediately for better UX
-    setSubmitted(true);
-    setLoading(false);
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
-    // Send email in background without blocking UI
-    const apiUrl = import.meta.env.PROD ? "" : "http://localhost:5000";
+      const response = await fetch(`${apiUrl}/api/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          isClient: form.isClient,
+        }),
+      });
 
-    fetch(`${apiUrl}/api/contact`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        isClient: form.isClient,
-      }),
-    }).catch((error) => {
-      console.error("Background email sending failed:", error);
-      // Don't show error to user as they already see success message
-    });
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitted(true);
+        setMessage(data.message);
+      } else {
+        setMessage(data.message || "Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      setMessage("Network error. Please check your connection and try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -79,7 +88,7 @@ const ContactSection = () => {
       </h2>
       {submitted ? (
         <div className="text-green-400 font-semibold text-center py-8">
-          Thank you! Your message has been received.
+          {Message}
         </div>
       ) : (
         <form className="space-y-4 max-w-xl mx-auto" onSubmit={handleSubmit}>
@@ -143,9 +152,6 @@ const ContactSection = () => {
               <label htmlFor="isclient">I want you to work on a project</label>
             </div>
           </div>
-          {error && (
-            <div className="text-red-400 text-sm text-center">{error}</div>
-          )}
           <div className="flex justify-center">
             <button
               type="submit"
@@ -169,6 +175,17 @@ const ContactSection = () => {
             </button>
           </div>
         </form>
+      )}
+      {Message && !submitted && (
+        <div
+          className={`text-center py-2 font-medium ${
+            Message.includes("success") || Message.includes("Thank you")
+              ? "text-green-400"
+              : "text-red-400"
+          }`}
+        >
+          {Message}
+        </div>
       )}
     </section>
   );

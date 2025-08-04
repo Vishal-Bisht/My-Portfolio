@@ -13,7 +13,7 @@ const contactLimiter = rateLimit({
 
 
 const validateContactForm = (req, res, next) => {
-  const { name, email, phone, isClient } = req.body;
+  const { name, email, phone } = req.body;
   
   if (!name || !email) {
     return res.status(400).json({
@@ -22,18 +22,12 @@ const validateContactForm = (req, res, next) => {
     });
   }
   
+  
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return res.status(400).json({
       error: 'Invalid email',
       message: 'Please provide a valid email address'
-    });
-  }
-  
-  if (phone && phone.length < 10) {
-    return res.status(400).json({
-      error: 'Invalid phone number',
-      message: 'Please provide a valid phone number'
     });
   }
   
@@ -54,16 +48,7 @@ router.post('/', contactLimiter, validateContactForm, async (req, res) => {
       ip: req.ip
     };
     
-    
     await sendContactEmail(contactData);
-    
-    
-    console.log('📧 New contact form submission:', {
-      name: contactData.name,
-      email: contactData.email,
-      isClient: contactData.isClient,
-      timestamp: contactData.timestamp
-    });
     
     res.status(200).json({
       success: true,
@@ -81,10 +66,44 @@ router.post('/', contactLimiter, validateContactForm, async (req, res) => {
 
 
 router.get('/test', (req, res) => {
+  const emailConfigured = process.env.EMAIL_USER && 
+                         process.env.EMAIL_PASSWORD && 
+                         process.env.EMAIL_USER !== 'your-email@gmail.com';
+  
   res.json({
     message: 'Contact API is working',
+    emailConfigured: emailConfigured,
     timestamp: new Date().toISOString()
   });
+});
+
+// Test email route - only available in development
+router.post('/test-email', async (req, res) => {
+  if (process.env.NODE_ENV === 'production') {
+    return res.status(404).json({ error: 'Only found in developer mode' });
+  }
+
+  try {
+    const testData = {
+      name: 'Test User',
+      email: 'test@example.com',
+      phone: '1234567890',
+      isClient: false,
+      timestamp: new Date().toISOString()
+    };
+
+    await sendContactEmail(testData);
+    
+    res.json({
+      success: true,
+      message: 'Test email sent successfully'
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: 'Test email failed',
+      message: error.message
+    });
+  }
 });
 
 export default router;
