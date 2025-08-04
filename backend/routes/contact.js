@@ -7,11 +7,11 @@ const router = express.Router();
 // Rate limiting for contact form - more restrictive
 const contactLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
-  max: 5, // limit each IP to 5 contact form submissions per hour
+  max: 3,
   message: 'Too many contact form submissions, please try again later.'
 });
 
-// Validation middleware
+
 const validateContactForm = (req, res, next) => {
   const { name, email, phone, isClient } = req.body;
   
@@ -22,7 +22,6 @@ const validateContactForm = (req, res, next) => {
     });
   }
   
-  // Basic email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return res.status(400).json({
@@ -31,7 +30,6 @@ const validateContactForm = (req, res, next) => {
     });
   }
   
-  // Phone validation (optional but if provided, should be valid)
   if (phone && phone.length < 10) {
     return res.status(400).json({
       error: 'Invalid phone number',
@@ -42,7 +40,7 @@ const validateContactForm = (req, res, next) => {
   next();
 };
 
-// POST /api/contact - Handle contact form submission
+
 router.post('/', contactLimiter, validateContactForm, async (req, res) => {
   try {
     const { name, email, phone, isClient } = req.body;
@@ -56,10 +54,10 @@ router.post('/', contactLimiter, validateContactForm, async (req, res) => {
       ip: req.ip
     };
     
-    // Send email (implement this service)
+    
     await sendContactEmail(contactData);
     
-    // Log the contact for admin purposes (you might want to save to database later)
+    
     console.log('📧 New contact form submission:', {
       name: contactData.name,
       email: contactData.email,
@@ -81,7 +79,7 @@ router.post('/', contactLimiter, validateContactForm, async (req, res) => {
   }
 });
 
-// GET /api/contact/test - Test endpoint
+
 router.get('/test', (req, res) => {
   res.json({
     message: 'Contact API is working',

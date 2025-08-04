@@ -2,9 +2,7 @@ import Navbar from "./components/Navbar";
 import HomeSection from "./components/HomeSection";
 import IntroSection from "./components/IntroSection";
 import SkillsSection from "./components/SkillsSection";
-// import ServicesSection from "./components/ServicesSection";
 import ProjectsSection from "./components/ProjectsSection";
-// import BlogSection from "./components/BlogSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 
@@ -16,9 +14,7 @@ function App() {
         <HomeSection />
         <IntroSection />
         <SkillsSection />
-        {/* <ServicesSection /> */}
         <ProjectsSection />
-        {/* <BlogSection /> */}
         <ContactSection />
         <Footer />
       </main>

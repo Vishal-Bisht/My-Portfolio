@@ -9,7 +9,7 @@ const ProjectsSection = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const apiUrl = import.meta.env.PROD ? "" : "http://localhost:5000";
+        const apiUrl = import.meta.env.VITE_API_URL;
         const response = await fetch(`${apiUrl}/api/projects`);
         const data = await response.json();
 
@@ -17,14 +17,10 @@ const ProjectsSection = () => {
           setProjects(data.projects);
         } else {
           setError("Failed to load projects");
-          // Fallback to hardcoded projects if API fails
-          setProjects(fallbackProjects);
         }
       } catch (error) {
         console.error("Projects fetch error:", error);
         setError("Failed to load projects");
-        // Fallback to hardcoded projects if API fails
-        setProjects(fallbackProjects);
       } finally {
         setLoading(false);
       }
