@@ -2,19 +2,13 @@
 
 Welcome to my personal portfolio! 🚀
 
-This project showcases my skills, projects, and experience as a Front-end Developer, Programmer, and CS Student. Built with React and Tailwind CSS, it features smooth scroll animations, a modern UI, and a responsive design.
-
-## ✨ Features
-- Animated typing effect for professions
-- Scroll animations using AOS
-- Responsive and modern design
-- Project showcase with images
-- Downloadable resume
-- Contact section
-- Social media links
+This project showcases my skills, projects, and experience as a Web Developer. Built with React,Express and Tailwind CSS. it features smooth scroll animations, a modern UI, and a responsive design.
 
 ## 🛠️ Tech Stack
+
 - React
+- Express
+- Node
 - Tailwind CSS
 - AOS (Animate On Scroll)
 - Vite
@@ -28,19 +22,31 @@ This project showcases my skills, projects, and experience as a Front-end Develo
    ```
 2. **Install dependencies:**
    ```sh
+   cd portfolio/frontend
+   npm install
+   ```
+   ```sh
+   cd portfolio/backend
    npm install
    ```
 3. **Run the development server:**
    ```sh
+   frontend
+   npm run dev
+   ```
+   ```sh
+   backend
    npm run dev
    ```
 4. **Open in your browser:**
-   Visit [http://localhost:5173](http://localhost:5173)
+   Visit [http://localhost:5173]
 
 ## 📄 Download My Resume
-You can download my resume directly from the site or from the [Resume.pdf](public/Resume.pdf) file.
+
+You can download my resume directly from the site.
 
 ## 🤝 Connect With Me
+
 Feel free to connect with me on:
 
 - [Instagram](https://www.instagram.com/vishal_bisht000/)
