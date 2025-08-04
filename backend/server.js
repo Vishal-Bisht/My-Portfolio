@@ -35,7 +35,10 @@ app.use(limiter);
 
 // CORS configuration
 app.use(cors({
-  origin: process.env.MY_PORTFOLIO_URL || 'http://localhost:5173',
+  origin: [
+    'http://localhost:5173',
+    process.env.My_PORTFOLIO_URL,
+  ],
   credentials: true
 }));
 
