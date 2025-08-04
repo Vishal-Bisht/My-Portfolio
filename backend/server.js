@@ -37,7 +37,7 @@ app.use(limiter);
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    process.env.My_PORTFOLIO_URL,
+    process.env.MY_PORTFOLIO_URL,
   ],
   credentials: true
 }));
