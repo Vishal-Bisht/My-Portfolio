@@ -10,7 +10,7 @@ const navLinks = [
   { href: "#Contact_me", label: "Contact me" },
 ];
 
-const Topbar = () => {
+const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleNavClick = (e, href) => {
@@ -99,4 +99,4 @@ const Topbar = () => {
   );
 };
 
-export default Topbar;
+export default Navbar;
