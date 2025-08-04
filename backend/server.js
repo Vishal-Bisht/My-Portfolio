@@ -34,11 +34,13 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // CORS configuration
+const allowedOrigins = [
+  'http://localhost:5173',
+  process.env.MY_PORTFOLIO_URL,
+].filter(Boolean);
+
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    process.env.MY_PORTFOLIO_URL,
-  ],
+  origin: allowedOrigins,
   credentials: true
 }));
 
