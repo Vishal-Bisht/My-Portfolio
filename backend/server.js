@@ -9,9 +9,6 @@ import contactRoutes from './routes/contact.js';
 import projectsRoutes from './routes/projects.js';
 
 
-app.get('/keep-alive', (req, res) => {
-  res.sendStatus(200);
-})
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,6 +19,9 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.get('/keep-alive', (req, res) => {
+  res.sendStatus(200);
+})
 
 app.use(helmet());
 
