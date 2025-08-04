@@ -9,6 +9,10 @@ import contactRoutes from './routes/contact.js';
 import projectsRoutes from './routes/projects.js';
 
 
+app.get('/keep-alive', (req, res) => {
+  res.sendStatus(200);
+})
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
