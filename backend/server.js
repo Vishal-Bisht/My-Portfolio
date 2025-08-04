@@ -36,8 +36,10 @@ app.use(limiter);
 // CORS configuration
 const allowedOrigins = [
   'http://localhost:5173',
-  process.env.MY_PORTFOLIO_URL,
-].filter(Boolean);
+  process.env.MY_PORTFOLIO_URL?.replace(/\/$/, ''), // Remove trailing slash if present
+].filter(Boolean); // Remove any undefined values
+
+console.log('🌐 Allowed CORS origins:', allowedOrigins);
 
 app.use(cors({
   origin: allowedOrigins,
