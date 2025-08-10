@@ -43,7 +43,6 @@ const HomeSection = () => {
         >
           <img
             src="/projects/programmer.png"
-            alt="Programmer"
             className="w-72 h-72 object-contain drop-shadow-xl rounded-lg"
             loading="lazy"
           />
