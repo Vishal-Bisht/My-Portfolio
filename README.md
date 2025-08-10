@@ -49,8 +49,8 @@ You can download my resume directly from the site.
 
 Feel free to connect with me on:
 
-- [Instagram](https://www.instagram.com/vishal_bisht000/)
-- [LinkedIn](https://www.linkedin.com/in/vishal-bist-4a5238261/)
+- [Instagram](https://www.instagram.com/vishal_bisht001/)
+- [LinkedIn](https://www.linkedin.com/in/vishal-bisht-4a5238261/)
 - [X (Twitter)](https://x.com/vishal_bisht128?t=H3wtKei4TBHEBUrorEmGXw&s=09)
 - [GitHub](https://github.com/Vishal-Bisht)
 

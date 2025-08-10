@@ -25,7 +25,7 @@ const Footer = () => (
         />
       </a>
       <a
-        href="https://www.linkedin.com/in/vishal-bist-4a5238261/"
+        href="https://www.linkedin.com/in/vishal-bisht-4a5238261/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn"
