@@ -39,6 +39,7 @@ const allowedOrigins = [
   process.env.MY_PORTFOLIO_URL?.replace(/\/$/, ''), // Remove trailing slash if present
 ].filter(Boolean); // Remove any undefined values
 
+
 app.use(cors({
   origin: allowedOrigins,
   credentials: true
