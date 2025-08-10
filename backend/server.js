@@ -39,8 +39,6 @@ const allowedOrigins = [
   process.env.MY_PORTFOLIO_URL?.replace(/\/$/, ''), // Remove trailing slash if present
 ].filter(Boolean); // Remove any undefined values
 
-console.log('🌐 Allowed CORS origins:', allowedOrigins);
-
 app.use(cors({
   origin: allowedOrigins,
   credentials: true
@@ -59,10 +57,13 @@ app.get('/api', (req, res) => {
   });
 });
 
-app.use('/api/contact', contactRoutes);
-app.use('/api/projects', projectsRoutes);
+app.post('/api/contact', contactRoutes);
+app.get('/api/projects', projectsRoutes);
 
-
+// for render backend sleep issue in free tier.
+app.get('/keep-alive', (req, res) => {
+  res.status(200).send("OK");
+});
 
 
 app.use((err, req, res, next) => {
