@@ -58,4 +58,4 @@ Or reach out via the contact form on the website!
 
 ---
 
-© 2025 Vishal Bisht. All rights reserved.
+© 2025 Vishal Bisht. All rights reserved 😉.
