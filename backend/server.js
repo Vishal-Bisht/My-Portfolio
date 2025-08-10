@@ -58,8 +58,8 @@ app.get('/api', (req, res) => {
   });
 });
 
-app.post('/api/contact', contactRoutes);
-app.get('/api/projects', projectsRoutes);
+app.use('/api/contact', contactRoutes);
+app.use('/api/projects', projectsRoutes);
 
 // for render backend sleep issue in free tier.
 app.get('/keep-alive', (req, res) => {
