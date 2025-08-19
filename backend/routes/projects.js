@@ -29,7 +29,7 @@ const projects = [
     name: "Prescripto",
     image: "/projects/prescripto.png",
     description: "A doctor appointment web app built with React and TailwindCSS.",
-    link: "https://prescripto-black-six.vercel.app/",
+    link: "https://prescripto-two-lake.vercel.app/",
     techStack: ["React", "TailwindCSS", "Vite"],
     featured: true,
     createdAt: "2024-03-05"
