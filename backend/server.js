@@ -5,8 +5,8 @@ import helmet from 'helmet';
 import { fileURLToPath } from 'url';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
-import contactRoutes from './routes/contact.js';
 import projectsRoutes from './routes/projects.js';
+import connectDB from './config/Database.js';
 
 
 
@@ -58,7 +58,6 @@ app.get('/api', (req, res) => {
   });
 });
 
-app.use('/api/contact', contactRoutes);
 app.use('/api/projects', projectsRoutes);
 
 // for render backend sleep issue in free tier.
