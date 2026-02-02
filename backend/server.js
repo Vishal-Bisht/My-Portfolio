@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import projectsRoutes from './routes/projects.js';
-import connectDB from './config/Database.js';
+import connectDB from './config/database.js';
 
 
 
