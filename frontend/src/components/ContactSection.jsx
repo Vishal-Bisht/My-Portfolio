@@ -1,5 +1,16 @@
 import { Mail, Phone, User, Briefcase } from "lucide-react";
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const formVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.3 } },
+};
 
 const initialForm = {
   name: "",
@@ -78,116 +89,150 @@ const ContactSection = () => {
   };
 
   return (
-    <section
+    <motion.section
       id="Contact_me"
       className="bg-gray-800/60 rounded-xl p-6 shadow-lg"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
     >
-      <h2 className="text-2xl font-bold mb-8 flex items-center gap-2 text-center justify-center">
+      <motion.h2
+        className="text-2xl font-bold mb-8 flex items-center gap-2 text-center justify-center"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
         <Briefcase className="inline-block h-6 w-6 text-indigo-400" />
         Contact me for work/general enquiries
-      </h2>
-      {submitted ? (
-        <div className="text-green-400 font-semibold text-center py-8">
-          {Message}
-        </div>
-      ) : (
-        <form className="space-y-4 max-w-xl mx-auto" onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label
-                htmlFor="clientname"
-                className="mb-1 flex items-center gap-1"
-              >
-                <User className="h-4 w-4 text-indigo-400" /> Name
-              </label>
-              <input
-                type="text"
-                id="clientname"
-                value={form.name}
-                onChange={handleChange}
-                className="w-full px-3 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="clientemail"
-                className="mb-1 flex items-center gap-1"
-              >
-                <Mail className="h-4 w-4 text-indigo-400" /> Email Address
-              </label>
-              <input
-                type="email"
-                id="clientemail"
-                value={form.email}
-                onChange={handleChange}
-                className="w-full px-3 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              />
-              <div className="text-xs text-gray-400 mt-1">
-                *I'll never share your email & phone details with anyone
+      </motion.h2>
+      <AnimatePresence mode="wait">
+        {submitted ? (
+          <motion.div
+            key="success"
+            className="text-green-400 font-semibold text-center py-8"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+          >
+            {Message}
+          </motion.div>
+        ) : (
+          <motion.form
+            key="form"
+            className="space-y-4 max-w-xl mx-auto"
+            onSubmit={handleSubmit}
+            variants={formVariants}
+            initial="hidden"
+            animate="visible"
+            exit={{ opacity: 0 }}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label
+                  htmlFor="clientname"
+                  className="mb-1 flex items-center gap-1"
+                >
+                  <User className="h-4 w-4 text-indigo-400" /> Name
+                </label>
+                <input
+                  type="text"
+                  id="clientname"
+                  value={form.name}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="clientemail"
+                  className="mb-1 flex items-center gap-1"
+                >
+                  <Mail className="h-4 w-4 text-indigo-400" /> Email Address
+                </label>
+                <input
+                  type="email"
+                  id="clientemail"
+                  value={form.email}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+                <div className="text-xs text-gray-400 mt-1">
+                  *I'll never share your email & phone details with anyone
+                </div>
+              </div>
+              <div>
+                <label
+                  htmlFor="clientphone"
+                  className="mb-1 flex items-center gap-1"
+                >
+                  <Phone className="h-4 w-4 text-indigo-400" /> Phone no.
+                </label>
+                <input
+                  type="tel"
+                  id="clientphone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  className="w-full px-3 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+              </div>
+              <div className="flex items-center mt-6 md:mt-0">
+                <input
+                  type="checkbox"
+                  id="isclient"
+                  checked={form.isClient}
+                  onChange={handleChange}
+                  className="mr-2"
+                />
+                <label htmlFor="isclient">
+                  I want you to work on a project
+                </label>
               </div>
             </div>
-            <div>
-              <label
-                htmlFor="clientphone"
-                className="mb-1 flex items-center gap-1"
+            <div className="flex justify-center">
+              <motion.button
+                type="submit"
+                disabled={loading}
+                className={`${
+                  loading
+                    ? "bg-indigo-400 cursor-not-allowed"
+                    : "bg-indigo-600 hover:bg-indigo-700"
+                } text-white px-6 py-2 rounded shadow flex items-center gap-2 transition-colors`}
+                whileHover={!loading ? { scale: 1.05 } : {}}
+                whileTap={!loading ? { scale: 0.95 } : {}}
               >
-                <Phone className="h-4 w-4 text-indigo-400" /> Phone no.
-              </label>
-              <input
-                type="tel"
-                id="clientphone"
-                value={form.phone}
-                onChange={handleChange}
-                className="w-full px-3 py-2 rounded bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              />
+                {loading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Briefcase className="h-4 w-4" /> Submit
+                  </>
+                )}
+              </motion.button>
             </div>
-            <div className="flex items-center mt-6 md:mt-0">
-              <input
-                type="checkbox"
-                id="isclient"
-                checked={form.isClient}
-                onChange={handleChange}
-                className="mr-2"
-              />
-              <label htmlFor="isclient">I want you to work on a project</label>
-            </div>
-          </div>
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              disabled={loading}
-              className={`${
-                loading
-                  ? "bg-indigo-400 cursor-not-allowed"
-                  : "bg-indigo-600 hover:bg-indigo-700"
-              } text-white px-6 py-2 rounded shadow flex items-center gap-2 transition-colors`}
-            >
-              {loading ? (
-                <>
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                  Sending...
-                </>
-              ) : (
-                <>
-                  <Briefcase className="h-4 w-4" /> Submit
-                </>
-              )}
-            </button>
-          </div>
-        </form>
-      )}
+          </motion.form>
+        )}
+      </AnimatePresence>
       {Message && !submitted && (
-        <div
+        <motion.div
           className={`text-center py-2 font-medium ${
             Message.includes("success") || Message.includes("Thank you")
               ? "text-green-400"
               : "text-red-400"
           }`}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
         >
           {Message}
-        </div>
+        </motion.div>
       )}
-    </section>
+    </motion.section>
   );
 };
 

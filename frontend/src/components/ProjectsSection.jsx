@@ -1,4 +1,21 @@
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.5, delay: i * 0.1, ease: "easeOut" },
+  }),
+  exit: { opacity: 0, scale: 0.95, transition: { duration: 0.2 } },
+};
 
 const ProjectsSection = () => {
   const [projects, setProjects] = useState([]);
@@ -33,92 +50,125 @@ const ProjectsSection = () => {
 
   if (loading) {
     return (
-      <section
+      <motion.section
         id="Projects"
         className="bg-gray-800/60 rounded-xl p-6 shadow-lg"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
       >
         <h2 className="text-2xl font-bold mb-4 text-center">Projects</h2>
         <div className="text-center py-8">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500 mx-auto"></div>
           <p className="mt-4 text-gray-400">Loading projects...</p>
         </div>
-      </section>
+      </motion.section>
     );
   }
 
   if (error && projects.length === 0) {
     return (
-      <section
+      <motion.section
         id="Projects"
         className="bg-gray-800/60 rounded-xl p-6 shadow-lg"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
       >
         <h2 className="text-2xl font-bold mb-4 text-center">Projects</h2>
         <div className="text-center py-8">
           <p className="text-red-400">{error}</p>
         </div>
-      </section>
+      </motion.section>
     );
   }
   return (
-    <section id="Projects" className="bg-gray-800/60 rounded-xl p-6 shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-center">Projects</h2>
+    <motion.section
+      id="Projects"
+      className="bg-gray-800/60 rounded-xl p-6 shadow-lg"
+      variants={sectionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+    >
+      <motion.h2
+        className="text-2xl font-bold mb-4 text-center"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        viewport={{ once: false }}
+      >
+        Projects
+      </motion.h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {visibleProjects.map((project) => (
-          <div
-            key={project.name}
-            className="bg-gray-900/80 rounded-lg p-4 shadow flex flex-col items-center hover:scale-[1.03] transition-transform duration-200"
-          >
-            <div className="w-full h-48 flex items-center justify-center mb-4 overflow-hidden rounded border border-gray-700 bg-gray-800">
-              <img
-                src={project.image}
-                alt={project.name}
-                className="object-contain max-h-44 max-w-full"
-                loading="lazy"
-              />
-            </div>
-            <h3 className="font-semibold text-lg mb-2 text-center">
-              {project.name}
-            </h3>
-            <p className="text-gray-400 mb-2 text-center">
-              {project.description}
-            </p>
-            <div className="flex flex-wrap gap-2 mb-4 justify-center">
-              {project.techStack &&
-                project.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    style={{
-                      backgroundColor: "#B8FF66",
-                      color: "#225100",
-                    }}
-                    className="text-xs px-2 py-1 rounded font-medium shadow-sm"
-                  >
-                    {tech}
-                  </span>
-                ))}
-            </div>
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded shadow text-sm font-medium"
+        <AnimatePresence mode="popLayout">
+          {visibleProjects.map((project, index) => (
+            <motion.div
+              key={project.name}
+              className="bg-gray-900/80 rounded-lg p-4 shadow flex flex-col items-center"
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              exit="exit"
+              viewport={{ once: false }}
+              custom={index % 4}
+              whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+              layout
             >
-              View Project
-            </a>
-          </div>
-        ))}
+              <div className="w-full h-48 flex items-center justify-center mb-4 overflow-hidden rounded border border-gray-700 bg-gray-800">
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  className="object-contain max-h-44 max-w-full"
+                  loading="lazy"
+                />
+              </div>
+              <h3 className="font-semibold text-lg mb-2 text-center">
+                {project.name}
+              </h3>
+              <p className="text-gray-400 mb-2 text-center">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2 mb-4 justify-center">
+                {project.techStack &&
+                  project.techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      style={{
+                        backgroundColor: "#B8FF66",
+                        color: "#225100",
+                      }}
+                      className="text-xs px-2 py-1 rounded font-medium shadow-sm"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+              </div>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded shadow text-sm font-medium"
+              >
+                View Project
+              </a>
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
       {projects.length > 4 && (
         <div className="flex justify-center mt-6">
-          <button
+          <motion.button
             className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded"
             onClick={() => setShowAll((v) => !v)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             {showAll ? "Show less" : "Show more"}
-          </button>
+          </motion.button>
         </div>
       )}
-    </section>
+    </motion.section>
   );
 };
 

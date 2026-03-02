@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const skills = [
   {
     src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg",
@@ -73,11 +75,28 @@ const skills = [
   },
 ];
 
+const sectionVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
 const SkillsSection = () => (
-  <section className="relative w-full py-8 bg-gray-800/60 rounded-xl shadow-lg overflow-hidden">
-    <h2 className="text-2xl font-bold text-center mb-6 text-white">
+  <motion.section
+    className="relative w-full py-8 bg-gray-800/60 rounded-xl shadow-lg overflow-hidden"
+    variants={sectionVariants}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, margin: "-50px" }}
+  >
+    <motion.h2
+      className="text-2xl font-bold text-center mb-6 text-white"
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      viewport={{ once: false }}
+    >
       My Skills
-    </h2>
+    </motion.h2>
     <div className="relative w-full">
       {/* Blur overlays */}
       <div
@@ -123,7 +142,7 @@ const SkillsSection = () => (
         100% { transform: translateX(-40%); }
       }
     `}</style>
-  </section>
+  </motion.section>
 );
 
 export default SkillsSection;
