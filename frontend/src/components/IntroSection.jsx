@@ -19,14 +19,14 @@ const IntroSection = () => {
   return (
     <motion.section
       id="Intro"
-      className="bg-gray-800/60 rounded-xl p-6 shadow-lg"
+      // className="bg-gray-800/60 rounded-xl p-6 shadow-lg"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
     >
       <motion.h2
-        className="text-2xl font-bold mb-2"
+        className="text-4xl font-bold mb-2"
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}

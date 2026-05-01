@@ -52,12 +52,11 @@ const ProjectsSection = () => {
     return (
       <motion.section
         id="Projects"
-        className="bg-gray-800/60 rounded-xl p-6 shadow-lg"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-2xl font-bold mb-4 text-center">Projects</h2>
+        <h2 className="text-4xl font-bold mb-4 text-center">Projects</h2>
         <div className="text-center py-8">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-500 mx-auto"></div>
           <p className="mt-4 text-gray-400">Loading projects...</p>
@@ -70,12 +69,11 @@ const ProjectsSection = () => {
     return (
       <motion.section
         id="Projects"
-        className="bg-gray-800/60 rounded-xl p-6 shadow-lg"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-2xl font-bold mb-4 text-center">Projects</h2>
+        <h2 className="text-4xl font-bold mb-4 text-center">Projects</h2>
         <div className="text-center py-8">
           <p className="text-red-400">{error}</p>
         </div>
@@ -85,14 +83,13 @@ const ProjectsSection = () => {
   return (
     <motion.section
       id="Projects"
-      className="bg-gray-800/60 rounded-xl p-6 shadow-lg"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
     >
       <motion.h2
-        className="text-2xl font-bold mb-4 text-center"
+        className="text-4xl font-bold mb-4 text-center"
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}

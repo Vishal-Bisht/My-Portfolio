@@ -94,7 +94,8 @@ const Footer = () => (
       transition={{ duration: 0.5, delay: 0.5 }}
       viewport={{ once: false }}
     >
-      &copy; {new Date().getFullYear()} Vishal Bisht. All rights reserved.
+      &copy; {new Date().getFullYear()} Vishal Bisht ~ Created with passion
+      &#10084;&#65039;
     </motion.div>
   </motion.footer>
 );

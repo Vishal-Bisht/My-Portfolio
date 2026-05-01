@@ -1,7 +1,7 @@
-import { color, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 
-const professions = ["Web Developer", "Programmer", "Fresher"];
+// const professions = ["Web Developer", "Programmer", "Fresher"];
 
 // Animation variants
 const fadeDown = {

@@ -82,14 +82,14 @@ const sectionVariants = {
 
 const SkillsSection = () => (
   <motion.section
-    className="relative w-full py-8 bg-gray-800/60 rounded-xl shadow-lg overflow-hidden"
+    // className="relative w-full py-8 bg-gray-800/60 rounded-xl shadow-lg overflow-hidden"
     variants={sectionVariants}
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, margin: "-50px" }}
   >
     <motion.h2
-      className="text-2xl font-bold text-center mb-6 text-white"
+      className="text-4xl font-bold text-center mb-6 text-white"
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
@@ -97,27 +97,20 @@ const SkillsSection = () => (
     >
       My Skills
     </motion.h2>
-    <div className="relative w-full">
+    <div className="relative pointer-events-none ">
       {/* Blur overlays */}
       <div
-        className="pointer-events-none absolute left-0 top-0 h-full w-16 z-10"
+        className="absolute left-0 h-full w-16 z-10 py-10 rounded-l-2xl"
         style={{
           background:
-            "linear-gradient(90deg, rgba(31,41,55,0.8) 70%, transparent)",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute right-0 top-0 h-full w-16 z-10"
-        style={{
-          background:
-            "linear-gradient(270deg, rgba(31,41,55,0.8) 70%, transparent)",
+            "linear-gradient(90deg, rgba(17,24,39,0.98) 0%, rgba(31,41,55,0.9) 60%, transparent 100%)",
         }}
       />
 
       {/* Skills Scrollbar */}
-      <div className=" overflow-x-hidden w-full ">
+      <div className="overflow-x-hidden w-full rounded-2xl ">
         <div
-          className="flex gap-6 md:gap-10 items-center will-change-transform group hover:[animation-play-state:paused]"
+          className="flex gap-6 md:gap-10 my-3"
           style={{
             animation: "skills-scroll 30s linear infinite",
             minWidth: "200%",
@@ -128,12 +121,19 @@ const SkillsSection = () => (
               key={idx}
               src={skill.src}
               alt={skill.alt}
-              className="h-8 w-8 md:h-16 md:w-16 sm:mr-4 object-contain select-none drop-shadow-lg flex-shrink-0"
+              className="h-8 w-8 items-center md:h-16 md:w-16 sm:mr-4 object-contain select-none flex-shrink-0"
               draggable="false"
             />
           ))}
         </div>
       </div>
+      <div
+        className="absolute right-0 bottom-[-1px] h-full w-16 z-10 py-10 rounded-r-2xl"
+        style={{
+          background:
+            "linear-gradient(270deg, rgba(17,24,39,0.98) 0%, rgba(31,41,55,0.9) 60%, transparent 100%)",
+        }}
+      />
     </div>
     {/* Animation styles */}
     <style>{`
