@@ -103,7 +103,7 @@ const SkillsSection = () => (
         className="absolute left-0 h-full w-16 z-10 py-10 rounded-l-2xl"
         style={{
           background:
-            "linear-gradient(90deg, rgba(17,24,39,0.98) 0%, rgba(31,41,55,0.9) 60%, transparent 100%)",
+            "linear-gradient(90deg, rgba(17,24,39,0.98) 0%, rgba(31,41,55,0.9) 40%, transparent 100%)",
         }}
       />
 
@@ -127,11 +127,12 @@ const SkillsSection = () => (
           ))}
         </div>
       </div>
+      {/* Blur overlays */}
       <div
         className="absolute right-0 bottom-[-1px] h-full w-16 z-10 py-10 rounded-r-2xl"
         style={{
           background:
-            "linear-gradient(270deg, rgba(17,24,39,0.98) 0%, rgba(31,41,55,0.9) 60%, transparent 100%)",
+            "linear-gradient(270deg, rgba(17,24,39,0.98) 0%, rgba(31,41,55,0.9) 40%, transparent 100%)",
         }}
       />
     </div>

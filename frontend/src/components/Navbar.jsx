@@ -1,5 +1,6 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import Particle from "./particle.jsx";
 
 const navLinks = [
   { href: "#Home", label: "Home" },
@@ -27,15 +28,21 @@ const Navbar = () => {
   return (
     <>
       <header
-        className={`w-full fixed top-0 left-0 z-20 backdrop-blur-md bg-gray-950/70 border-b border-gray-800 transition-colors duration-300 flex items-center`}
+        className={`isolate w-full fixed top-0 left-0 z-20 overflow-hidden backdrop-blur-sm transition-colors duration-300 flex items-center`}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between w-full px-4 py-3">
+        <Particle
+          id="tsparticles-navbar"
+          fullScreen={false}
+          className="absolute inset-0 z-0 opacity-70"
+          zIndex={0}
+        />
+        <div className="relative z-10 max-w-7xl mx-auto flex items-center justify-between w-full px-4 py-3">
           <a
             href="#Home"
             className="font-bold text-xl tracking-wide text-indigo-400 select-none outline-none"
             onClick={(e) => handleNavClick(e, "#Home")}
           >
-            Vishal Bisht
+            Vishal
           </a>
           <nav className="hidden md:block">
             <ul className="flex space-x-4">
